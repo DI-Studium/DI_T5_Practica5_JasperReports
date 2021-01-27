@@ -25,12 +25,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase TicketsAlta permite crear un nuevo ticket
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class TicketsAlta extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JDateChooser fechaChooser;
@@ -45,12 +47,12 @@ public class TicketsAlta extends JFrame {
 	int dia;
 	String[] ArticuloT=null;
 	ArrayList<String> al = new ArrayList<String>();//Crea un array list
-	 //creamos el arreglo de objetos que contendra el contenido de las columnas
+	 //creamos el arreglo de objetos que contendrá el contenido de las columnas
 	 Object[] data = new Object[4];
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetros
 	 * @throws ParseException 
 	 */
 	public TicketsAlta() throws ParseException {
@@ -153,13 +155,13 @@ public class TicketsAlta extends JFrame {
 		 getContentPane().add(scrollPane, BorderLayout.CENTER);
 		 //manejamos la salida
 		addWindowListener(new WindowAdapter() {});
-		//Hasta aqui sera la tabla
+		//Hasta aquí será la tabla
 		
 		tableTicket.setBounds(12, 174, 658, 177);
 		contentPane.add(tableTicket);
 		btnAnadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArticuloT=choiceArticulo.getSelectedItem().split("-");//guardamos en una tabla cada dato que esta separado por un guion del choise.
+				ArticuloT=choiceArticulo.getSelectedItem().split("-");//guardamos en una tabla cada dato que está separado por un guion del choise.
 				al.add(ArticuloT[0]);
 				al.add(ArticuloT[1]);
 				al.add(ArticuloT[2]);
@@ -200,8 +202,8 @@ public class TicketsAlta extends JFrame {
 				String fecha = ""+anio+"/"+mes+"/"+dia;
 				System.out.println(fecha);
 				setVisible(false);
-				//Cierra la aplicacion
-				//Conectarse a la BD y hacer las consustas
+				//Cierra la aplicación
+				//Conectarse a la BD y hacer las consultas
 				// Conectar BD
 				conexion = bd.conectar();
 				// Hacer INSERT
@@ -235,7 +237,7 @@ public class TicketsAlta extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				//System.exit(0);
 			}
 		});

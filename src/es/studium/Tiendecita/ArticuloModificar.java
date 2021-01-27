@@ -11,15 +11,18 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.awt.event.ActionEvent;
 import java.awt.Choice;
-
+/**
+ * Clase ArticuloModificar, permite modificar los valores de un artículo.
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class ArticuloModificar extends JFrame {
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
 	String[] cadena;
 	int idArticuloEditar;
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDescripcion;
@@ -27,7 +30,7 @@ public class ArticuloModificar extends JFrame {
 	private JTextField textCantidad;
 
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetro
 	 */
 	public ArticuloModificar() {
 		setTitle("Modificar Art\u00EDculo");

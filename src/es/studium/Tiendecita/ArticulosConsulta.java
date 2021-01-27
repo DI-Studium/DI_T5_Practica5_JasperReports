@@ -23,6 +23,12 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+/**
+ * Clase ArticulosConsulta, permite consultar los valores de los artículos
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class ArticulosConsulta extends JFrame {
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
@@ -34,7 +40,7 @@ public class ArticulosConsulta extends JFrame {
 	private JTable tableArt;
 
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetro
 	 */
 	public ArticulosConsulta() {
 		setTitle("Consulta Art\u00EDculos");
@@ -48,7 +54,7 @@ public class ArticulosConsulta extends JFrame {
 		conexion = bd.conectar();
 		String[] data1 = bd.consultarArticulosTabla(conexion).split("#");
 		bd.desconectar(conexion);
-		//creamos el arreglo de objetos que contendra el
+		//creamos el arreglo de objetos que contendrá el
 		//contenido de las columnas
 		Object[] data = new Object[4];
 		// creamos el modelo de Tabla
@@ -86,7 +92,7 @@ public class ArticulosConsulta extends JFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				//System.exit(0);
 			}
 		});
@@ -112,6 +118,9 @@ public class ArticulosConsulta extends JFrame {
 		contentPane.add(btnImprimir);
 		setVisible(true);
 	}
+	/**
+	 * Método para generar el informe de la consulta de los articulos
+	 */
 	public void imprimirPDF(){
 		try 
 		{ 

@@ -24,7 +24,12 @@ import java.io.File;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase TicketsConsulta permite ver los tickets
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class TicketsConsulta extends JFrame {
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
@@ -38,7 +43,7 @@ public class TicketsConsulta extends JFrame {
 	private JPanel contentPane;
 	private JTable tableTicket;
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetros
 	 */
 	public TicketsConsulta() {
 		setTitle("Consulta Ticket");
@@ -52,7 +57,7 @@ public class TicketsConsulta extends JFrame {
 
 		conexion = bd.conectar();
 		String[] data1 = bd.consultarTicketsTabla(conexion).split("#");
-		//creamos el arreglo de objetos que contendra el
+		//creamos el arreglo de objetos que contendrá el
 		//contenido de las columnas
 		Object[] data = new Object[3];
 		// creamos el modelo de Tabla
@@ -162,7 +167,7 @@ public class TicketsConsulta extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				//System.exit(0);
 			}
 		});
@@ -170,6 +175,9 @@ public class TicketsConsulta extends JFrame {
 		contentPane.add(btnCancelar);
 		setVisible(true);
 	}
+	/**
+	 * Método para sacar un informe con todos los tickets
+	 */
 	public void imprimirPDF(){
 		try 
 		{ 
@@ -178,7 +186,7 @@ public class TicketsConsulta extends JFrame {
 			System.out.println("Fichero ListadoTicketsTiendecita.jasper generado CORRECTAMENTE!"); 
 			// Objeto para guardar parámetros necesarios para el informe 
 			HashMap<String,Object> parametros = new HashMap<String,Object>();
-			//Guardamos los parametros del informe
+			//Guardamos los parámetros del informe
 			
 	
 			

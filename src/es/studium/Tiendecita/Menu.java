@@ -11,17 +11,21 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-
+/**
+ * Archivo de ejecución del programa, contiene el menú
+ * @author Alvaro Carballo
+ * @since 2021
+ * @version 1.0
+ */
 public class Menu extends JFrame implements ActionListener {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,6 +50,9 @@ public class Menu extends JFrame implements ActionListener {
 	JMenuItem mntmTicketsAlta = new JMenuItem("Alta");
 	JMenuItem mntmTicketsConsulta = new JMenuItem("Consulta");
 	JMenuItem mntmTicketsConsultaFecha = new JMenuItem("Consulta Fecha");
+	/**
+	 * Constructor del menú
+	 */
 	public Menu() {
 		setTitle("Tiendecita");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,10 +90,11 @@ public class Menu extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-
-		
+		contentPane.setLayout(null);	
 	}
+	/**
+	 * Acciones a realizar según pulsación.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==mntmArticulosAlta) {
 			new ArticulosAlta();

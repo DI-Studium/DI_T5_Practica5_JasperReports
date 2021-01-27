@@ -23,21 +23,27 @@ import java.io.File;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase TicketsConsultaFecha Muestra los tickets que hay entre dos fechas
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class TicketsConsultaFecha2 extends JFrame {
 	String fecha;
 	String fecha2;
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
 	int idTicketConsultar;
-	/**
-	 * 
-	 */
+
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tableTicket;
 	/**
-	 * Create the frame.
+	 * Constructor con parámetros
+	 * @param fecha Parámetro de la fecha de inicio
+	 * @param fecha2 Parámetro de la fecha de fin
 	 */
 	public TicketsConsultaFecha2(String fecha, String fecha2 ) {
 		this.fecha=fecha;
@@ -53,9 +59,12 @@ public class TicketsConsultaFecha2 extends JFrame {
 
 		conexion = bd.conectar();
 		String[] data1 = bd.consultarTicketsTablaFecha(conexion, fecha, fecha2).split("#");
-		//Comprobamos si la busqueda genera datos
-		if (data1.length==0) {
-		//creamos el arreglo de objetos que contendra el
+		
+		//Comprobamos si la búsqueda genera datos
+		
+		//if (data1) {
+		
+		//creamos el arreglo de objetos que contendrá el
 		//contenido de las columnas
 		Object[] data = new Object[3];
 		// creamos el modelo de Tabla
@@ -114,18 +123,21 @@ public class TicketsConsultaFecha2 extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				//System.exit(0);
 			}
 		});
 		btnCancelar.setBounds(563, 367, 97, 25);
 		contentPane.add(btnCancelar);
 		setVisible(true);
-		}
-		else if (data1.length>0) {
-			System.out.println("No hay tickets a mostrar");
-		}
+		//}
+		//else {
+		//System.out.println("No hay tickets a mostrar");
+		//}
 	}
+	/**
+	 * Metodo para crear un informe y mostrar los datos del ticket seleccionado
+	 */
 	public void imprimirPDF(){
 		try 
 		{ 
@@ -134,7 +146,7 @@ public class TicketsConsultaFecha2 extends JFrame {
 			System.out.println("Fichero ListadoTicketsTiendecita.jasper generado CORRECTAMENTE!"); 
 			// Objeto para guardar parámetros necesarios para el informe 
 			HashMap<String,Object> parametros = new HashMap<String,Object>();
-			//Guardamos los parametros del informe
+			//Guardamos los parámetros del informe
 			
 			String[] fechaCambio=fecha.split("/");
 			String fechaesp1 = fechaCambio[2]+"/"+fechaCambio[1]+"/"+fechaCambio[0];
@@ -148,7 +160,7 @@ public class TicketsConsultaFecha2 extends JFrame {
 			Connection conexion2 = bd.conectar();
 			// Completar el informe con los datos de la base de datos 
 			JasperPrint print = JasperFillManager.fillReport(report, parametros, conexion2);
-			//Desconexion de la BD
+			//Desconexión de la BD
 			bd.desconectar(conexion2);
 			// Mostrar el informe en JasperViewer 
 			JasperViewer.viewReport(print, false); 

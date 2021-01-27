@@ -11,12 +11,14 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase ArticulAlta, permite dar de alta un artículo nuevo.
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class ArticulosAlta extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDescripcion;
@@ -28,7 +30,7 @@ public class ArticulosAlta extends JFrame {
 	Dialog dlgMensaje = new Dialog(this,"Mensaje", true);
 
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetro
 	 */
 	public ArticulosAlta() {
 		

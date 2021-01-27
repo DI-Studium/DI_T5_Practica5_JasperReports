@@ -23,7 +23,12 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase TicketsConsulta2 permite consultar los datos de un ticket
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class TicketsConsulta2 extends JFrame {
 	String idTicket;
 	String fecha;
@@ -31,9 +36,8 @@ public class TicketsConsulta2 extends JFrame {
 	Connection conexion = null;
 	double total=0.0;
 	double subtotal=0.0;
-	/**
-	 * 
-	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFecha;
@@ -41,7 +45,9 @@ public class TicketsConsulta2 extends JFrame {
 	private JTextField textTotal;
 	private JTextField textIdTicket;
 	/**
-	 * Create the frame.
+	 * Constructor con parámetros
+	 * @param idTicket Parámetro para filtrar los datos del ticket a mostrar
+	 * @param fecha Parámetro para mostrar la fecha del ticket en el informe
 	 */
 	public TicketsConsulta2(String idTicket, String fecha ) {
 		this.idTicket=idTicket;
@@ -66,7 +72,7 @@ public class TicketsConsulta2 extends JFrame {
 
 		conexion = bd.conectar();
 		String[] data1 = bd.consultarTicketsTabla2(conexion, idTicket).split("#");
-		//creamos el arreglo de objetos que contendra el
+		//creamos el arreglo de objetos que contendrá el
 		//contenido de las columnas
 		Object[] data = new Object[3];
 		// creamos el modelo de Tabla
@@ -105,7 +111,7 @@ public class TicketsConsulta2 extends JFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				//System.exit(0);
 			}
 		});
@@ -144,6 +150,9 @@ public class TicketsConsulta2 extends JFrame {
 		contentPane.add(btnImprimir);
 		setVisible(true);
 	}
+	/**
+	 * Método para crear un informe y mostrar los datos del ticket seleccionado
+	 */
 	public void imprimirPDF(){
 		try 
 		{ 
@@ -152,7 +161,7 @@ public class TicketsConsulta2 extends JFrame {
 			System.out.println("Fichero Ticket.jasper generado CORRECTAMENTE!"); 
 			// Objeto para guardar parámetros necesarios para el informe 
 			HashMap<String,Object> parametros = new HashMap<String,Object>();
-			//Guardamos los parametros del informe
+			//Guardamos los parámetros del informe
 			parametros.put("titulo", "Factura Simplificada");
 			parametros.put("nTicket", idTicket);
 			parametros.put("fecha", fecha);
@@ -165,7 +174,7 @@ public class TicketsConsulta2 extends JFrame {
 			Connection conexion2 = bd.conectar();
 			// Completar el informe con los datos de la base de datos 
 			JasperPrint print = JasperFillManager.fillReport(report, parametros, conexion2);
-			//Desconexion de la BD
+			//Desconexión de la BD
 			bd.desconectar(conexion2);
 			// Mostrar el informe en JasperViewer 
 			JasperViewer.viewReport(print, false); 

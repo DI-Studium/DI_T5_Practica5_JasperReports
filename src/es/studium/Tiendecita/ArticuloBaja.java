@@ -9,19 +9,21 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.awt.event.ActionEvent;
-
+/**
+ * Clase Artículo Baja, da de baja un artículo.
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class ArticuloBaja extends JFrame {
 	int idArticuloBorrar = 0;
 	BaseDatos bd = new BaseDatos();
 	Connection conexion = null;
 	String[] cadena;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetro
 	 */
 	public ArticuloBaja() {
 		setTitle("Baja de art\u00EDculo");

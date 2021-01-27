@@ -11,11 +11,14 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
+/**
+ * Clase TicketsConsultaFecha Realiza una búsqueda de los tickets que hay entre dos fechas
+ * @author Alvca
+ * @since 2021
+ * @version 1.0
+ */
 public class TicketsConsultaFecha extends JFrame {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JDateChooser fechaDesde;
 	int anio;
@@ -28,7 +31,7 @@ public class TicketsConsultaFecha extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Create the frame.
+	 * Constructor sin parámetros
 	 */
 	public TicketsConsultaFecha() {
 		setTitle("Consulta Tickets");
@@ -99,7 +102,7 @@ public class TicketsConsultaFecha extends JFrame {
 				String fecha2 = ""+anio2+"/"+mes2+"/"+dia2;
 				
 				setVisible(false);
-				//Cierra la aplicacion
+				//Cierra la aplicación
 				new TicketsConsultaFecha2(fecha, fecha2);
 			}
 		});
