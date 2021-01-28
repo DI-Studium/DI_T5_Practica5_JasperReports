@@ -79,7 +79,7 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{cantidadArticulo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00;-###0.00">
 				<reportElement x="459" y="0" width="89" height="20" uuid="b9ce0c37-f06f-4031-b225-2893942c6ebc"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{precioArticulo}]]></textFieldExpression>

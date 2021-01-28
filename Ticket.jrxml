@@ -109,7 +109,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidadArticulo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00;-###0.00">
 				<reportElement x="356" y="1" width="163" height="20" uuid="d5c9c838-0a52-4a81-a037-f3aa1568db2c"/>
 				<textElement textAlignment="Right">
 					<paragraph leftIndent="5" rightIndent="5"/>
@@ -138,7 +138,7 @@
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
-			<textField>
+			<textField pattern="###0.00;-###0.00">
 				<reportElement x="359" y="0" width="161" height="45" uuid="08b6259e-e569-4a60-8186-2b4babf0d223"/>
 				<textElement>
 					<font size="24" isBold="true"/>
